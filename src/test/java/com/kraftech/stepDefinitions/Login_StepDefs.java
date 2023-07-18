@@ -5,6 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class Login_StepDefs {
+
     @Given("The user is on the login page")
     public void the_user_is_on_the_login_page() {
         System.out.println("I open the browser and navigate to kraftech web page");
