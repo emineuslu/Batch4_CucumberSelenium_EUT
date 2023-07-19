@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/kraftech/stepDefinitions",
         dryRun = false,
-        tags = "@login"
+        tags = "@parameterizeMethods"
 )
 public class CukesRunner {
 }

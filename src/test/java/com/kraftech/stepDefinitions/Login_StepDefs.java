@@ -43,4 +43,16 @@ public class Login_StepDefs {
     public void the_user_enters_sdet_credentials() {
         System.out.println("I entered SDET userEmail and password and click on login button");
     }
+
+    @When("The user logs in using {string} and {string}")
+    public void the_user_logs_in_using_and(String string, String string2) {
+        loginPage.login(string,string2);
+    }
+
+    @Then("Validate that username is {string}")
+    public void validate_that_username_is(String string) {
+        String expected = string;
+        String actual = loginPage.getUserAccountName();
+        Assert.assertEquals(expected,actual);
+    }
 }
