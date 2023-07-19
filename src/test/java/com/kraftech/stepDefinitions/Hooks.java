@@ -5,22 +5,23 @@ import io.cucumber.java.Before;
 
 public class Hooks {
 
-    @Before
+    @Before(order = 0)
     public void setUp(){
         System.out.println("This is coming from before method");
     }
 
-    @After
+    @After(order = 0)
     public void tearDown(){
         System.out.println("This is coming from after method");
+        //if block
     }
 
-    @Before("@dataBase")
+    @Before(value = "@dataBase", order = 1)
     public void openDataBase(){
         System.out.println("Open database");
     }
 
-    @After("@dataBase")
+    @After(value = "@dataBase", order = 1)
     public void closeDataBase(){
         System.out.println("Close database");
     }
