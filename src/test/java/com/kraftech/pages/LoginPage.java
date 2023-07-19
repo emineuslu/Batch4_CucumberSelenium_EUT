@@ -6,71 +6,47 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 
-import java.util.List;
-
 public class LoginPage extends BasePage {
 
-//    public LoginPage(){
-//       PageFactory.initElements(Driver.get(),this);
-//    }
-
-    @FindBy(css ="#email" )
-    public WebElement userEmailInput_loc;
+    @FindBy(css = "#email")
+    public WebElement emailInputBox;
 
     @FindBy(css = "#yourPassword")
-    public WebElement passwordInput_loc;
+    public WebElement passwordInputBox;
 
-    @FindBy(xpath = "//*[.='Login']")
-    public  WebElement loginBtn_loc;
+    @FindBy(xpath = "//button[text()='Login']")
+    public WebElement loginButton;
 
-    @FindBy(xpath ="//*[contains(text(),'Password is incorrect. Please check')]" )
-    public WebElement passwordWarningMessage_loc;
+    @FindBy(xpath = "//div[contains(text(),'incorrect')]")
+    public WebElement passwordErrorMessage;
 
-    @FindBy(xpath = "//*[contains(text(),'Email address is incorrect. Please check')]")
-    public WebElement emailWarningMessage_loc;
+    @FindBy(xpath = "//div[contains(text(),'address')]")
+    public WebElement usernameErrorMessage;
 
-    //POM2'nin BAŞLANGIÇ NOKTASI
-    //POM2'nin BAŞLANGIÇ NOKTASI
-    //POM2'nin BAŞLANGIÇ NOKTASI
-    //POM2'nin BAŞLANGIÇ NOKTASI
-    //POM2'nin BAŞLANGIÇ NOKTASI
-    //POM2'nin BAŞLANGIÇ NOKTASI
-
-
-    //list
-    @FindBy(xpath = "(//span[.='Alerts']/../../..)[1]/li")
-    public List<WebElement> componentsMenuList_loc;
-
-    //list
-    @FindBy(css = ".nav-item.dropdown")
-    public List<WebElement> upTitles;
-
-   // if one of the element is true it is pass => OR
-    @FindAll({
-            @FindBy(css ="#email" ),
-            @FindBy(name = "email")
-    })
-    public WebElement userEmail2_loc;
-    // All locator should be true => AND
+    //AND logic
     @FindBys({
-            @FindBy(css ="#email" ),
-            @FindBy(name = "email")
+          @FindBy(css = "#email"),
+          @FindBy(name = "email")
     })
-    public WebElement userEmail3_loc;
+    public WebElement emailInputBoxWithFindBys;
+
+    //OR logic
+    @FindAll({
+            @FindBy(id = "email"),
+            @FindBy(name = "anOtherName")
+    })
+    public WebElement emailInputBoxWithFindAll;
 
     public void login(String userEmail, String password){
-        userEmailInput_loc.sendKeys(userEmail);
-        passwordInput_loc.sendKeys(password);
-        loginBtn_loc.click();
+        emailInputBox.sendKeys(userEmail);
+        passwordInputBox.sendKeys(password);
+        loginButton.click();
     }
 
-    //method overloading
+    //method OVERLOADİNG
     public void login(){
-        String userEmail= ConfigurationReader.get("userEmail2");
-        String password= ConfigurationReader.get("password2");
-
-        userEmailInput_loc.sendKeys(userEmail);
-        passwordInput_loc.sendKeys(password);
-        loginBtn_loc.click();
+        emailInputBox.sendKeys(ConfigurationReader.get("userEmail"));
+        passwordInputBox.sendKeys(ConfigurationReader.get("userPassword"));
+        loginButton.click();
     }
 }

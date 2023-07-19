@@ -11,53 +11,34 @@ import java.util.List;
 
 public abstract class BasePage {
 
-    public BasePage() {
-        PageFactory.initElements(Driver.get(), this);
+    public BasePage(){
+        PageFactory.initElements(Driver.get(),this);
     }
 
-    @FindBy(xpath = "//span[.='Dashboard']/../../../li")
-    public List<WebElement> menuList;
-    @FindBy(css = ".d-none.d-md-block.dropdown-toggle.ps-2")
+    @FindBy(xpath = "//li[contains(@class,'nav-item dropdown')]")
+    public List<WebElement> upTitles;
+
+    @FindBy(css = "[class='d-none d-md-block dropdown-toggle ps-2']")
     public WebElement userAccountName;
-    @FindBy(xpath = "//span[.='Developers']")
-    public WebElement developersMenu;
-    @FindBy(xpath = "//span[.='Dashboard']")
-    public WebElement dashboardMenu;
 
-
-    public void navigateToModule(String tab){
-        String locator = "//span[.='" + tab + "']";
+    public void navigateToModule(String menu){
+        String locator = "//span[.='" + menu + "']";
         Driver.get().findElement(By.xpath(locator)).click();
     }
 
-    //method overloading
-    public void navigateToModule(String tab, String module) {
+    //method OVERLOADING
+    public void navigateToModule(String tab, String module){
+        String locator = "//span[.='" + tab + "']";
+        Driver.get().findElement(By.xpath(locator)).click();
 
-        String tabLoc = "//span[.='" + tab + "']";
-        String moduleLoc = "//span[.='" + module + "']";
+        BrowserUtils.waitFor(2);
 
-        BrowserUtils.waitForClickablility(By.xpath(tabLoc), 5);
-        WebElement tabElement = Driver.get().findElement(By.xpath(tabLoc));
-        tabElement.click();
-
-        BrowserUtils.waitForClickablility(By.xpath(moduleLoc),5);
-        WebElement moduleElement= Driver.get().findElement(By.xpath(moduleLoc));
-        moduleElement.click();
-
+        String locator2 = "//span[.='" + module + "']";
+        WebElement moduleElement = Driver.get().findElement(By.xpath(locator2));
+        BrowserUtils.clickWithJS(moduleElement);
     }
 
-    public String getAccountName(String accountName){
-        return Driver.get().findElement(By.xpath("//span[.='"+accountName+"']")).getText();
+    public String getUserAccountName(){
+        return userAccountName.getText();
     }
-
 }
-
-/**
- * Abstract class:
- * * is a restricted class that cannot be used to create objects
- * * (to access it, it must be inherited from another class).
- * Abstract method:
- * * can only be used in an abstract class,
- * * and it does not have a body.
- * * The body is provided by the subclass (inherited from).
- */
