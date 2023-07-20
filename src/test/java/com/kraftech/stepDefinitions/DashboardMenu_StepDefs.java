@@ -44,4 +44,10 @@ public class DashboardMenu_StepDefs {
                 dashboardPage.userAccountName.getText()
         );
     }
+    @When("The user navigates to {string} and {string} sub menu")
+    public void the_user_navigates_to_and_sub_menu(String menu, String subMenu) {
+        dashboardPage.navigateToModule(menu,subMenu);
+    }
+
+
 }
