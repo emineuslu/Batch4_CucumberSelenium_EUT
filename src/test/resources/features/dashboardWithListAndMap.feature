@@ -44,12 +44,38 @@ Feature: Dashboard Menu Checks
     When The user logs in using "john@gmail.com" and "John1234."
     And The user navigates to "John" and "My Profile" sub menu
     Then The user should be able to see following subMenu
-      | Overview        |
-      | Edit Profile    |
-      | Add Experience  |
-      | Add Education   |
+      | Overview         |
+      | Edit Profile     |
+      | Add Experience   |
+      | Add Education    |
       | Change Passwords |
 
     # Class Task f2 HW
     # go to web page -> https://demoqa.com/
     # verify that user see following menu list elements, forms,...
+
+    #day 5 Class Task f3
+    # example 2 with scenario outline
+    # use 3 different user credentials
+  @c_dataTable_S_outline
+  Scenario Outline: Example-2 for "<name>" with Scenario  Outline
+    When The user logs in using following menu
+      | username | <userEmail> |
+      | password | <password>  |
+      | name     | <name>      |
+    Then The user should be able to login
+    And The user should be able to see following menu
+      | Dashboard  |
+      | Developers |
+      | Components |
+      | Forms      |
+      | JavaScript |
+      | <name>     |
+    Examples:
+      | userEmail        | password  | name         |
+      | mike@gmail.com   | mike1234  | mike         |
+      | john@gmail.com   | John1234. | John         |
+      | eddiem@kraft.com | eddiem12  | Eddie Murphy |
+
+
+
