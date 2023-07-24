@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/kraftech/stepDefinitions",
         dryRun = false,
-        tags = "@c_dataTable_S_outline"
+        tags = "@negativeLogin"
 )
 public class CukesRunner {
 }
