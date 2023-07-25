@@ -1,6 +1,7 @@
 package com.kraftech.stepDefinitions;
 
 import io.cucumber.java.en.*;
+import org.junit.Assert;
 
 public class NavigationMenu_StepDefs {
 
@@ -32,6 +33,7 @@ public class NavigationMenu_StepDefs {
     @When("Go to forms-input menu")
     public void go_to_forms_input_menu() {
         System.out.println("Go to forms input menu");
+        Assert.assertTrue(false);
     }
 
     @Then("Validate that General Form Elements - Input text is visible")
@@ -47,6 +49,7 @@ public class NavigationMenu_StepDefs {
     @When("Go to my profile menu")
     public void go_to_my_profile_menu() {
         System.out.println("Go to my profile menu");
+        Assert.assertTrue(false);
     }
 
     @Then("Verify that User Profile text is visible")

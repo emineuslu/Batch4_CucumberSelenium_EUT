@@ -26,7 +26,7 @@ public class Login_StepDefs {
     @Then("The user should be able to login")
     public void the_user_should_be_able_to_login() {
         String actual = Driver.get().getCurrentUrl();
-        String expected = "https://www.krafttechexlab.com/index";
+        String expected = "https://www.krafttechexlab.com/indexx";
         Assert.assertEquals(expected,actual);
     }
 

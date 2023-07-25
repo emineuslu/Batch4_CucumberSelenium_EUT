@@ -1,3 +1,4 @@
+@regression
 Feature: Components Title Checks
 
   @title
