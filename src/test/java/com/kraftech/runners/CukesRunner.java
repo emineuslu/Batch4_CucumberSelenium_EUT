@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/kraftech/stepDefinitions",
         dryRun = false,
-        tags = "@editprofile"
+        tags = "@title"
 )
 public class CukesRunner {
 }

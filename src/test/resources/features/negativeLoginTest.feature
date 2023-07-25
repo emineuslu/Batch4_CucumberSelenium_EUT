@@ -1,3 +1,4 @@
+@regression
 Feature: Negative Login Test
 
   @negativeLogin

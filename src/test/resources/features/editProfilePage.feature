@@ -1,3 +1,4 @@
+@regression
 Feature: Edit profile page
 
   @editprofile
