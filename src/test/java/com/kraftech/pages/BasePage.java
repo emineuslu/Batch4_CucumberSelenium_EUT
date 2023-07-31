@@ -2,12 +2,14 @@ package com.kraftech.pages;
 
 import com.kraftech.utilities.BrowserUtils;
 import com.kraftech.utilities.Driver;
+import com.kraftech.utilities.ExcelUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
+import java.util.Map;
 
 public abstract class BasePage {
 
@@ -40,5 +42,11 @@ public abstract class BasePage {
 
     public String getUserAccountName(){
         return userAccountName.getText();
+    }
+
+    public List<Map<String, String>> getDataList(String sheetName){
+        ExcelUtil excelUtil=new ExcelUtil("src/test/resources/KT_B4 DDF test.xlsx",sheetName);
+        List<Map<String, String>> dataList = excelUtil.getDataList();
+        return dataList;
     }
 }
